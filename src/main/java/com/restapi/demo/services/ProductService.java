@@ -23,7 +23,7 @@ public class ProductService {
         return repository.findById(id).get();
     }
 
-    public Iterable<Product> findAll(Product product) {
+    public Iterable<Product> findAll() {
         return repository.findAll();
     }
 
