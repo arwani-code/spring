@@ -10,8 +10,13 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name_product", length = 500)
     private String name;
+
+    @Column(name = "descipriton_product", length = 500)
     private String description;
+    
+    @Column(name = "price_product")
     private Double price;
 
     public Product() {
