@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -20,6 +21,10 @@ public class ProductService {
     }
 
     public Product findOne(Long id) {
+        Optional<Product> product = repository.findById(id);
+        if(product.isEmpty()){
+            return null;
+        }
         return repository.findById(id).get();
     }
 
@@ -27,11 +32,8 @@ public class ProductService {
         return repository.findAll();
     }
 
-    public void removeProduct(Product product) {
-        repository.delete(product);
+    public void removeProduct(Long id) {
+        repository.deleteById(id);
     }
 
-    public List<Product> findByName(String name) {
-        return repository.findByNameContains(name);
-    }
 }

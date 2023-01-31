@@ -22,4 +22,19 @@ public class ProductController {
         return service.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Product findById(@PathVariable("id") Long id){
+        return service.findOne(id);
+    }
+
+    @PutMapping
+    public Product updateProduct(@RequestBody Product product){
+        return service.saveProduct(product);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable("id") Long id){
+         service.removeProduct(id);
+    }
+
 }
