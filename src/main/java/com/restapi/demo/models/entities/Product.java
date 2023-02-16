@@ -1,6 +1,7 @@
 package com.restapi.demo.models.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Entity
@@ -11,12 +12,14 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Name is required")
     @Column(name = "name_product", length = 500)
     private String name;
 
+    @NotEmpty(message = "Description is required")
     @Column(name = "descipriton_product", length = 500)
     private String description;
-    
+
     @Column(name = "price_product")
     private Double price;
 
