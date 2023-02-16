@@ -10,7 +10,7 @@ public class WelcomeController {
 
     @GetMapping("welcome")
     public String welcome(){
-        return "Welcome Spring Boot Rest";
+        return "Welcome Spring Boot";
     }
 
 }
