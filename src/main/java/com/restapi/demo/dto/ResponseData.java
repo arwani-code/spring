@@ -8,7 +8,8 @@ public class ResponseData<T> {
     private List<String> messages = new ArrayList<>();
     private T payload;
 
-    public boolean isStatus() {
+    public boolean isStatus()
+    {
         return status;
     }
 
@@ -20,15 +21,18 @@ public class ResponseData<T> {
         return messages;
     }
 
-    public void setMessages(List<String> messages) {
+    public void setMessages(List<String> messages)
+    {
         this.messages = messages;
     }
 
-    public T getPayload() {
+    public T getPayload()
+    {
         return payload;
     }
 
     public void setPayload(T payload) {
+
         this.payload = payload;
     }
 }

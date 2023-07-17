@@ -3,6 +3,7 @@ package com.restapi.demo.models.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_product")
@@ -25,6 +26,11 @@ public class Product implements Serializable {
     @Column(name = "price_product")
     private Double price;
 
+    @ManyToOne
+    private Category category;
+
+    private Set<Supplier> suppliers;
+
     public Product() {
     }
 
@@ -33,6 +39,22 @@ public class Product implements Serializable {
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public Set<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(Set<Supplier> suppliers) {
+        this.suppliers = suppliers;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Long getId() {
