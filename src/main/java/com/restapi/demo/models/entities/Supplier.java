@@ -2,6 +2,7 @@ package com.restapi.demo.models.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_suppliers")
@@ -19,6 +20,16 @@ public class Supplier implements Serializable {
 
     @Column(length = 500, nullable = false, unique = true)
     private String address;
+
+    private Set<Product> products;
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
     public Long getId() {
         return id;
