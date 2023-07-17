@@ -21,6 +21,7 @@ public class Supplier implements Serializable {
     @Column(length = 500, nullable = false, unique = true)
     private String address;
 
+    @ManyToMany(mappedBy = "suppliers")
     private Set<Product> products;
 
     public Set<Product> getProducts() {

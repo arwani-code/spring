@@ -29,6 +29,12 @@ public class Product implements Serializable {
     @ManyToOne
     private Category category;
 
+    @ManyToMany
+    @JoinTable(
+            name = "tb_product_supplier",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "supplier_id")
+    )
     private Set<Supplier> suppliers;
 
     public Product() {
