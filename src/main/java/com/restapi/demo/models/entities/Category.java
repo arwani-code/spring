@@ -2,16 +2,19 @@ package com.restapi.demo.models.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100, unique = true, nullable = false)
+    @Column(unique = true, nullable = false, name = "name")
     private String name;
 
     public Long getId() {

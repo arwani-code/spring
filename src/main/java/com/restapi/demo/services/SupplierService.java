@@ -2,6 +2,7 @@ package com.restapi.demo.services;
 
 import com.restapi.demo.models.entities.Supplier;
 import com.restapi.demo.models.repos.CategoryRepository;
+import com.restapi.demo.models.repos.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 public class SupplierService {
 
     @Autowired
-    private CategoryRepository.SupplierRepository supplierRepository;
+    private SupplierRepository supplierRepository;
 
     public Supplier save(Supplier supplier) {
         return supplierRepository.save(supplier);

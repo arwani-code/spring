@@ -1,6 +1,7 @@
 package com.restapi.demo.services;
 
 import com.restapi.demo.models.entities.Product;
+import com.restapi.demo.models.entities.Supplier;
 import com.restapi.demo.models.repos.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ProductService {
 
     public Product findOne(Long id) {
         Optional<Product> product = repository.findById(id);
-        if(product.isEmpty()){
+        if (product.isEmpty()) {
             return null;
         }
         return repository.findById(id).get();
@@ -36,4 +37,13 @@ public class ProductService {
         repository.deleteById(id);
     }
 
+    public Product addSupplier(Supplier supplier, Long productId) {
+        Product product = findOne(productId);
+        if (product == null) {
+            throw new RuntimeException("Product with id " + productId + "not found");
+        }
+        product.getSuppliers().add(supplier);
+        return saveProduct(product);
+    }
 }
+

@@ -1,18 +1,26 @@
 package com.restapi.demo.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "tb_suppliers")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class Supplier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, name = "name")
     private String name;
 
     @Column(length = 500, nullable = false)
@@ -22,6 +30,7 @@ public class Supplier implements Serializable {
     private String address;
 
     @ManyToMany(mappedBy = "suppliers")
+//    @JsonBackReference
     private Set<Product> products;
 
     public Set<Product> getProducts() {
